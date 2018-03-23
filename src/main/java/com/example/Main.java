@@ -33,6 +33,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @SpringBootApplication
@@ -72,6 +74,11 @@ public class Main {
       model.put("message", e.getMessage());
       return "error";
     }
+  }
+  
+  @RequestMapping(method = RequestMethod.GET)
+  public String cuadrado(@RequestParam("valor") int val) {
+      return "{valor:" + val +  ",cuadrado:" + val*val + "}";
   }
 
   @Bean
