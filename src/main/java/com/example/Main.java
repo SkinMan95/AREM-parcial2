@@ -76,7 +76,7 @@ public class Main {
     }
   }
   
-  @RequestMapping(method = RequestMethod.GET)
+  @RequestMapping(method = RequestMethod.GET, produces = "application/json")
   public String cuadrado(@RequestParam("valor") int val) {
       return "{valor:" + val +  ",cuadrado:" + val*val + "}";
   }
