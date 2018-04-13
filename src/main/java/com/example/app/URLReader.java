@@ -20,9 +20,9 @@ import java.util.List;
  */
 public class URLReader {
 
-    public static final String BASE_URL = "https://quiet-atoll-31438.herokuapp.com";
+    public static final String BASE_URL = "https://calm-plateau-62657.herokuapp.com";
     
-    private static String response(String url) throws Exception {
+    public static String response(String url) throws Exception {
         StringBuilder res = new StringBuilder();
         URL google = new URL(url);
         try (BufferedReader reader = new BufferedReader(
@@ -43,11 +43,16 @@ public class URLReader {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        List<String> terms = new ArrayList<>(Arrays.asList("/", "/hello", "/db"));
-        
-        for (String term : terms) {
-            System.out.println(response(BASE_URL + term));
+//        List<String> terms = new ArrayList<>(Arrays.asList("/", "/cuadrado?valor=7", "/db"));
+//        
+//        for (String term : terms) {
+//            System.out.println(response(BASE_URL + term));
+//        }
+
+        for (int i = 0; i < 20; i++) {
+            (new ConcurrentCallThread()).start();
         }
+        
     }
 
 }
