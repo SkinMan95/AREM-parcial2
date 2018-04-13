@@ -33,6 +33,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -77,8 +79,10 @@ public class Main {
   }
   
   @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-  public String cuadrado(@RequestParam("valor") int val) {
-      return "{valor:" + val +  ",cuadrado:" + val*val + "}";
+  public ResponseEntity<Cuadrado> cuadrado(@RequestParam("valor") int val) {
+      Cuadrado res = new Cuadrado();
+      res.setValor(val);
+      return new ResponseEntity<>(res, HttpStatus.ACCEPTED);
   }
 
   @Bean
